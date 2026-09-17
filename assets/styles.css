@@ -22,6 +22,7 @@ html,body{
   font-family:'IBM Plex Sans', system-ui, sans-serif;
   -webkit-font-smoothing:antialiased;
   scroll-behavior:smooth;
+  overflow-x:hidden;
 }
 
 h1,h2,h3{
@@ -202,7 +203,16 @@ section.block.tint{
 
 @media (max-width:760px){
   .link-list{ grid-template-columns:1fr; }
-  nav.main ul{ gap:18px; flex-wrap:wrap; }
+  nav.main ul{ gap:14px; flex-wrap:wrap; }
+  nav.main a{ font-size:14px; }
+  header.site .wrap{ flex-wrap:wrap; gap:12px; }
+}
+
+@media (max-width:480px){
+  .wrap{ padding:0 20px; }
+  header.site img.logo{ height:30px; }
+  nav.main ul{ gap:10px 16px; }
+  nav.main a{ font-size:13px; }
 }
 
 /* Colleague cards */
@@ -324,6 +334,14 @@ section.block.tint{
   max-width:58ch;
   margin-top:20px;
   font-size:17px;
+}
+
+@media (max-width:600px){
+  .hero{ padding:48px 0 40px 0; }
+  .hero .years{ font-size:52px; }
+  .brand-echo .back{ left:6px; top:4px; }
+  .hero .years-label{ font-size:14px; max-width:none; }
+  .hero h1{ max-width:none; }
 }
 
 .page-header{
