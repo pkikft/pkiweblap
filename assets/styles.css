@@ -54,9 +54,32 @@ a{ color:var(--navy); }
 header.site{
   background:var(--navy);
   border-bottom:3px solid var(--blue);
-  position:sticky;
+  position:fixed;
   top:0;
-  z-index:10;
+  left:0;
+  right:0;
+  width:100%;
+  z-index:50;
+}
+
+/* A kezdőlap saját flex/snap elrendezést használ, ott a fejléc a normál
+   dokumentumfolyamban marad fixen a tetején, nincs szükség position:fixed-re */
+body.home-scroll header.site{
+  position:static;
+}
+
+/* A többi oldalon a fejléc kikerül a dokumentumfolyamból, ezért az
+   oldal tartalmának kell hagyni helyet felül, hogy ne csússzon alá */
+body:not(.home-scroll){
+  padding-top:88px;
+}
+
+@media (max-width:760px){
+  body:not(.home-scroll){ padding-top:76px; }
+}
+
+@media (max-width:480px){
+  body:not(.home-scroll){ padding-top:66px; }
 }
 
 header.site .wrap{
@@ -219,7 +242,6 @@ section.block.tint{
 }
 
 @media (max-width:480px){
-  .wrap{ padding:0 20px; }
   header.site img.logo{ height:30px; }
   nav.main ul{ gap:10px 16px; }
   nav.main a{ font-size:13px; }
