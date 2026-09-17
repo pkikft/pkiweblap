@@ -261,6 +261,24 @@ section.block.tint{
   grid-template-columns:1fr;
 }
 
+.people.compact .person{
+  padding:20px 22px;
+}
+
+.people.compact .person h3{
+  font-size:18px;
+  margin-bottom:4px;
+}
+
+.people.compact .person .role{
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+.people.compact .person .meta{
+  font-size:13px;
+}
+
 .person{
   background:var(--white);
   padding:32px;
