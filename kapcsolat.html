@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
+<script>document.documentElement.classList.add('js');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kapcsolat – PKI Könyvvizsgáló Iroda Kft</title>
+<meta name="description" content="Vegye fel a kapcsolatot a PKI Könyvvizsgáló Iroda Kft-vel.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pkikft.hu/kapcsolat.html">
+<meta property="og:title" content="Kapcsolat – PKI Könyvvizsgáló Iroda Kft">
+<meta property="og:description" content="Vegye fel a kapcsolatot a PKI Könyvvizsgáló Iroda Kft-vel.">
+<meta property="og:image" content="https://pkikft.hu/assets/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Kapcsolat – PKI Könyvvizsgáló Iroda Kft">
+<meta name="twitter:image" content="https://pkikft.hu/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
@@ -11,7 +21,7 @@
 <header class="site">
   <div class="wrap">
     <a href="index.html" class="logo-link">
-      <img src="assets/logo.png" alt="PKI Könyvvizsgáló Iroda Kft" class="logo">
+      <img src="assets/logo-dark.png" alt="PKI Könyvvizsgáló Iroda Kft" class="logo">
     </a>
     <nav class="main">
       <ul>
@@ -26,13 +36,13 @@
 
 <main>
   <div class="wrap page-header">
-    <p class="eyebrow">Kapcsolat</p>
-    <h1>Vegye fel velünk a kapcsolatot</h1>
+    <p class="eyebrow reveal">Kapcsolat</p>
+    <h1 class="reveal">Vegye fel velünk a kapcsolatot</h1>
   </div>
 
   <section class="block">
     <div class="wrap contact-grid">
-      <div class="contact-info">
+      <div class="contact-info reveal">
         <p>Kérdése van könyvvizsgálattal vagy kapcsolódó szolgáltatásainkkal kapcsolatban? Írjon nekünk, és kollégáink hamarosan válaszolnak.</p>
 
         <div class="item">
@@ -56,16 +66,16 @@
         </div>
       </div>
 
-      <div>
+      <div class="reveal">
         <p class="lead" style="font-size:19px;">Kérjen tőlünk ajánlatot</p>
         <p style="color:var(--ink-soft); font-size:15px;">A gomb megnyitja levelezőprogramját, és előkészíti a levelet irodánk címére, ajánlatkérés tárggyal.</p>
         <p>
-          <a href="mailto:pkikft@pkikft.hu?subject=Aj%C3%A1nlatk%C3%A9r%C3%A9s&body=Tisztelt%20PKI%20Könyvvizsgáló%20Iroda!%0A%0ASzeretnék%20ajánlatot%20kérni%20az%20alábbi%20szolgáltatásra:%0A%0A" style="display:inline-block; margin-top:12px; padding:14px 28px; background:var(--navy); color:#fff; text-decoration:none; font-weight:500;">Kérjen tőlünk ajánlatot</a>
+          <a href="mailto:pkikft@pkikft.hu?subject=Aj%C3%A1nlatk%C3%A9r%C3%A9s&body=Tisztelt%20PKI%20Könyvvizsgáló%20Iroda!%0A%0ASzeretnék%20ajánlatot%20kérni%20az%20alábbi%20szolgáltatásra:%0A%0A" class="btn btn-primary" style="margin-top:12px;">Kérjen tőlünk ajánlatot</a>
         </p>
 
         <p class="lead" style="font-size:19px; margin-top:36px;">Írjon nekünk közvetlenül</p>
         <p>
-          <a href="mailto:pkikft@pkikft.hu" style="display:inline-block; margin-top:4px; padding:14px 28px; border:1px solid var(--navy); color:var(--navy); text-decoration:none; font-weight:500;">Levél írása</a>
+          <a href="mailto:pkikft@pkikft.hu" class="btn btn-secondary" style="margin-top:4px;">Levél írása</a>
         </p>
       </div>
     </div>
@@ -83,6 +93,11 @@
       <p><a href="mailto:pkikft@pkikft.hu">pkikft@pkikft.hu</a></p>
       <p><a href="tel:+36306305069">+36 30 630 5069</a></p>
     </div>
+    <div class="col">
+      <h3>Jogi tudnivalók</h3>
+      <p><a href="kapcsolat.html">Kapcsolat</a></p>
+      <p><a href="adatvedelem.html">Adatvédelem</a></p>
+    </div>
   </div>
   <div class="wrap bottom">
     © <span id="year"></span> PKI Könyvvizsgáló Iroda Kft. Minden jog fenntartva.
@@ -90,5 +105,6 @@
 </footer>
 
 <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script src="assets/scripts.js" defer></script>
 </body>
 </html>

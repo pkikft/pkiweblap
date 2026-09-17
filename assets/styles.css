@@ -32,12 +32,14 @@ h1,h2,h3{
   color:var(--navy);
   margin:0;
   line-height:1.25;
+  overflow-wrap:break-word;
 }
 
 p{
   line-height:1.75;
   color:var(--ink);
   margin:0 0 18px 0;
+  overflow-wrap:break-word;
 }
 
 a{ color:var(--navy); }
@@ -50,8 +52,8 @@ a{ color:var(--navy); }
 
 /* Header */
 header.site{
-  border-bottom:1px solid var(--rule);
-  background:var(--white);
+  background:var(--navy);
+  border-bottom:3px solid var(--blue);
   position:sticky;
   top:0;
   z-index:10;
@@ -72,7 +74,7 @@ header.site .logo-link{
 }
 
 header.site img.logo{
-  height:38px;
+  height:52px;
   width:auto;
   display:block;
 }
@@ -87,7 +89,7 @@ nav.main ul{
 
 nav.main a{
   text-decoration:none;
-  color:var(--ink);
+  color:#e7edf6;
   font-size:15px;
   font-weight:500;
   padding-bottom:4px;
@@ -96,7 +98,7 @@ nav.main a{
 
 nav.main a:hover,
 nav.main a.active{
-  color:var(--navy);
+  color:#ffffff;
   border-bottom-color:var(--blue);
 }
 
@@ -151,10 +153,14 @@ section.block.tint{
 }
 
 .eyebrow{
-  color:var(--blue);
+  display:inline-block;
+  color:var(--navy);
+  background:var(--blue-pale);
   font-weight:600;
-  font-size:14px;
-  margin-bottom:10px;
+  font-size:13px;
+  padding:6px 14px;
+  border-radius:999px;
+  margin-bottom:14px;
 }
 
 .lead{
@@ -179,13 +185,16 @@ section.block.tint{
   padding:32px 28px;
   border-right:1px solid var(--rule);
   border-bottom:1px solid var(--rule);
+  border-top:3px solid transparent;
   text-decoration:none;
   color:var(--ink);
-  transition:background 0.15s ease;
+  transition:background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
 .link-list a:hover{
   background:var(--blue-pale);
+  border-top-color:var(--blue);
+  transform:translateY(-3px);
 }
 
 .link-list h3{
@@ -206,6 +215,7 @@ section.block.tint{
   nav.main ul{ gap:14px; flex-wrap:wrap; }
   nav.main a{ font-size:14px; }
   header.site .wrap{ flex-wrap:wrap; gap:12px; }
+  header.site img.logo{ height:40px; }
 }
 
 @media (max-width:480px){
@@ -228,6 +238,7 @@ section.block.tint{
 .person{
   background:var(--white);
   padding:32px;
+  border-left:3px solid var(--blue);
 }
 
 .person .role{
@@ -352,6 +363,12 @@ section.block.tint{
   font-size:clamp(30px,4vw,40px);
 }
 
+@media (max-width:600px){
+  .page-header{ padding:36px 0 4px 0; }
+  .page-header h1{ font-size:26px; }
+  .lead{ max-width:none; }
+}
+
 /* Stats */
 .stats-grid{
   display:grid;
@@ -360,11 +377,17 @@ section.block.tint{
   background:var(--rule);
   border:1px solid var(--rule);
   margin-top:40px;
+  position:relative;
+}
+
+.stats-track{
+  display:contents;
 }
 
 .stat{
   background:var(--white);
   padding:36px 28px;
+  border-left:3px solid var(--blue);
 }
 
 .stat .number{
@@ -383,8 +406,46 @@ section.block.tint{
   max-width:22ch;
 }
 
+.stats-dots{
+  display:none;
+  justify-content:center;
+  gap:8px;
+  margin-top:18px;
+}
+
+.stats-dots button{
+  width:8px;
+  height:8px;
+  padding:0;
+  border-radius:50%;
+  border:none;
+  background:var(--rule);
+  cursor:pointer;
+}
+
+.stats-dots button.active{
+  background:var(--blue);
+}
+
 @media (max-width:760px){
-  .stats-grid{ grid-template-columns:1fr; }
+  .stats-grid{
+    display:block;
+    overflow:hidden;
+    position:relative;
+    border:1px solid var(--rule);
+    background:var(--white);
+  }
+  .stats-track{
+    display:flex;
+    transition:transform 0.45s ease;
+  }
+  .stat{
+    min-width:100%;
+    box-sizing:border-box;
+    border-left:none;
+    border-right:1px solid var(--rule);
+  }
+  .stats-dots{ display:flex; }
 }
 
 /* Services */
@@ -400,6 +461,7 @@ section.block.tint{
 .service{
   background:var(--white);
   padding:32px;
+  border-left:3px solid var(--blue);
 }
 
 .service h3{
@@ -415,4 +477,114 @@ section.block.tint{
 
 @media (max-width:760px){
   .services-grid{ grid-template-columns:1fr; }
+}
+
+/* Reveal-on-scroll animáció — csak akkor rejt el semmit, ha a JS ténylegesen fut */
+.reveal{
+  transition:opacity 0.7s ease, transform 0.7s ease;
+}
+
+html.js .reveal{
+  opacity:0;
+  transform:translateY(28px);
+}
+
+html.js .reveal.is-visible{
+  opacity:1;
+  transform:none;
+}
+
+.reveal-group .reveal:nth-child(2){ transition-delay:0.08s; }
+.reveal-group .reveal:nth-child(3){ transition-delay:0.16s; }
+.reveal-group .reveal:nth-child(4){ transition-delay:0.24s; }
+.reveal-group .reveal:nth-child(5){ transition-delay:0.32s; }
+
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
+
+/* Homepage full-page snap scrolling */
+html.home-scroll, body.home-scroll{
+  height:100%;
+}
+
+body.home-scroll{
+  margin:0;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+
+body.home-scroll header.site{
+  flex:0 0 auto;
+  position:static;
+}
+
+body.home-scroll .snap-container{
+  flex:1 1 auto;
+  overflow-y:auto;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
+}
+
+body.home-scroll .snap-section{
+  scroll-snap-align:start;
+  scroll-snap-stop:always;
+  min-height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:32px;
+  padding-bottom:32px;
+}
+
+body.home-scroll footer.site.snap-section{
+  justify-content:flex-end;
+}
+
+@media (max-width:760px){
+  body.home-scroll .snap-section{ padding-top:20px; padding-bottom:20px; }
+}
+
+/* CTA buttons */
+.btn{
+  display:inline-block;
+  padding:14px 28px;
+  text-decoration:none;
+  font-weight:500;
+  transition:transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.btn-primary{
+  background:var(--navy);
+  color:#fff;
+}
+
+.btn-primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 10px 20px rgba(24,37,68,0.25);
+}
+
+.btn-secondary{
+  border:1px solid var(--navy);
+  color:var(--navy);
+}
+
+.btn-secondary:hover{
+  transform:translateY(-2px);
+  background:var(--blue-pale);
+}
+
+/* Stat/service/person cards: subtle lift on hover */
+.stat, .service, .person{
+  transition:transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat:hover, .service:hover, .person:hover{
+  transform:translateY(-2px);
+  box-shadow:0 12px 24px rgba(24,37,68,0.08);
+  position:relative;
+  z-index:1;
 }
